@@ -1,4 +1,4 @@
-package KNUCHAT.Configures;
+package KNUCHAT.Config;
 
 
 import java.util.HashMap;
@@ -12,10 +12,11 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
+import org.springframework.kafka.support.serializer.JsonSerializer;
 
 @Configuration
 @PropertySource("classpath:application-kafka.properties")
-public class KafkaConfigure {
+public class KafkaConfig {
 
     @Value("${spring.kafka.bootstrap-servers}")
     private String bootstrapAddress;
@@ -32,7 +33,7 @@ public class KafkaConfigure {
 
         //Default
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
-        props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+        props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
         return new DefaultKafkaProducerFactory<>(props);
     }
 

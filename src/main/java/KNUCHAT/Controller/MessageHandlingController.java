@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @Slf4j
 public class MessageHandlingController {
-    KafkaService kafkaService;
+    private final KafkaService kafkaService;
     @MessageMapping("/{id}") // pub
     @SendTo("/sub/room/{id}") // Sub
     public ChatMessage testMessage(@DestinationVariable("id") Long id,

@@ -1,4 +1,4 @@
-package KNUCHAT.Configures;
+package KNUCHAT.Config;
 
 
 import java.util.HashMap;
@@ -15,7 +15,7 @@ import org.springframework.kafka.core.ProducerFactory;
 
 @Configuration
 @PropertySource("classpath:application-kafka.properties")
-public class KafkaConfigure {
+public class KafkaConfig {
 
     @Value("${spring.kafka.bootstrap-servers}")
     private String bootstrapAddress;

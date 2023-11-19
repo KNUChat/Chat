@@ -15,6 +15,6 @@ public class KafkaService {
 
     public void sendMessage(ChatMessage chatMessage){
         log.info("Producer message : " + chatMessage.getMessage());
-        this.kafkaTemplate.sendDefault(chatMessage.getMessage());
+        this.kafkaTemplate.sendDefault(chatMessage);
     }
 }

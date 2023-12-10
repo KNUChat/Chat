@@ -1,13 +1,9 @@
 package KNUCHAT.Domain;
 
-import KNUCHAT.enumType.VideoChatStatus;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.annotation.JsonValueInstantiator;
+import KNUCHAT.enumType.VideoCallStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.ToString;
 
 @AllArgsConstructor
@@ -16,6 +12,7 @@ import lombok.ToString;
 @Getter
 public class VideoMessage {
     private Long roomId;
-
-    private VideoChatStatus videoChatStatus;
+    private Long senderId;
+    private Long receiverId;
+    private VideoCallStatus videoCallStatus;
 }

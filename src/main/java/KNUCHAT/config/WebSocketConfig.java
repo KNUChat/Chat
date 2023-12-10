@@ -1,4 +1,4 @@
-package KNUCHAT.Config;
+package KNUCHAT.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;

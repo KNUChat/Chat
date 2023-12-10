@@ -1,7 +1,7 @@
-package KNUCHAT.Config;
+package KNUCHAT.config;
 
 
-import KNUCHAT.Domain.VideoMessage;
+import KNUCHAT.dao.VideoMessage;
 import java.util.HashMap;
 import java.util.Map;
 import lombok.extern.slf4j.Slf4j;

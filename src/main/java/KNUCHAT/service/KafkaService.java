@@ -1,7 +1,7 @@
-package KNUCHAT.Service;
+package KNUCHAT.service;
 
-import KNUCHAT.Domain.ChatMessage;
-import KNUCHAT.Domain.VideoMessage;
+import KNUCHAT.dao.ChatMessage;
+import KNUCHAT.dao.VideoMessage;
 import KNUCHAT.enumType.ChatMessageType;
 import java.time.LocalDateTime;
 import lombok.RequiredArgsConstructor;

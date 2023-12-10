@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public enum VideoChatStatus {
+public enum VideoCallStatus {
     CONNECTED("CONNECTED"),
     DISCONNECTED("DISCONNECTED");
 

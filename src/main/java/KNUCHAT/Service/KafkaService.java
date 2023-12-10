@@ -27,11 +27,13 @@ public class KafkaService {
     @KafkaListener(topics = "connect-video-call-room", errorHandler = "kafkaListenerErrorHandler")
     public void sendVideoMessage(VideoMessage videoMessage){
         log.info("VideoCall Message : " + videoMessage);
-        ChatMessage chatMessage = ChatMessage.builder().
-                roomId(videoMessage.getRoomId()).
-                chatMessageType(ChatMessageType.NOTICE).
-                message(videoMessage.getVideoChatStatus().getMessage()).
-                sendTime(LocalDateTime.now())
+        ChatMessage chatMessage = ChatMessage.builder()
+                .roomId(videoMessage.getRoomId())
+                .receiverId(videoMessage.getReceiverId())
+                .senderId(videoMessage.getSenderId())
+                .chatMessageType(ChatMessageType.NOTICE)
+                .message(videoMessage.getVideoCallStatus().getMessage())
+                .sendTime(LocalDateTime.now())
                 .build();
         this.sendMessage(chatMessage);
         stompTemplate.convertAndSend("/sub/room/" + videoMessage.getRoomId().toString(),

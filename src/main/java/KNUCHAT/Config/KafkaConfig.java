@@ -65,10 +65,10 @@ public class KafkaConfig {
     @Bean
     public ConsumerFactory<Object, Object> consumerFactory() {
 //
-//        JsonDeserializer<VideoMessage> deserializer = new JsonDeserializer<>(VideoMessage.class);
-//        deserializer.setRemoveTypeHeaders(false);
-//        deserializer.addTrustedPackages("*");
-//        deserializer.setUseTypeMapperForKey(true);
+        JsonDeserializer<VideoMessage> deserializer = new JsonDeserializer<>(VideoMessage.class);
+        deserializer.setRemoveTypeHeaders(false);
+        deserializer.addTrustedPackages("*");
+        deserializer.setUseTypeMapperForKey(true);
 
         Map<String, Object> props = new HashMap<>();
 
@@ -78,7 +78,7 @@ public class KafkaConfig {
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
         props.put(JsonDeserializer.TRUSTED_PACKAGES, "*");
-        props.put(JsonDeserializer.USE_TYPE_INFO_HEADERS, "true");
+        props.put(JsonDeserializer.USE_TYPE_INFO_HEADERS, "false");
         props.put(JsonDeserializer.VALUE_DEFAULT_TYPE, VideoMessage.class);
         return new DefaultKafkaConsumerFactory<>(props);
     }

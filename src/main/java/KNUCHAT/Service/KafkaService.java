@@ -24,7 +24,7 @@ public class KafkaService {
         this.kafkaTemplate.sendDefault(chatMessage);
     }
 
-    @KafkaListener(topics = "connect-video-call-room")
+    @KafkaListener(topics = "connect-video-call-room", errorHandler = "kafkaListenerErrorHandler")
     public void sendVideoMessage(VideoMessage videoMessage){
         log.info("VideoCall Message : " + videoMessage);
         ChatMessage chatMessage = ChatMessage.builder().

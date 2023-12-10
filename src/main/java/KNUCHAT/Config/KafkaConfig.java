@@ -4,6 +4,7 @@ package KNUCHAT.Config;
 import KNUCHAT.Domain.VideoMessage;
 import java.util.HashMap;
 import java.util.Map;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -17,10 +18,14 @@ import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
+import org.springframework.kafka.listener.KafkaListenerErrorHandler;
+import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
 import org.springframework.kafka.support.serializer.JsonSerializer;
+import org.springframework.messaging.MessageHeaders;
 
 @Configuration
+@Slf4j
 @PropertySource("classpath:application-kafka.properties")
 public class KafkaConfig {
 
@@ -76,5 +81,19 @@ public class KafkaConfig {
         props.put(JsonDeserializer.USE_TYPE_INFO_HEADERS, "true");
         props.put(JsonDeserializer.VALUE_DEFAULT_TYPE, VideoMessage.class);
         return new DefaultKafkaConsumerFactory<>(props);
+    }
+
+    @Bean
+    public KafkaListenerErrorHandler kafkaListenerErrorHandler(){
+        return (message, exception) -> {
+            MessageHeaders headers = message.getHeaders();
+            String topic = headers.get(KafkaHeaders.RECEIVED_TOPIC, String.class);
+            Long offset = headers.get(KafkaHeaders.OFFSET, Long.class);
+
+            log.info("Error in Listener at topic: " + topic + ", partition: "  + ", offset: " + offset);
+            log.info("Error: " + exception.getMessage());
+
+            return null;
+        };
     }
 }

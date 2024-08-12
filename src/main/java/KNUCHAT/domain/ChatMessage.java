@@ -1,6 +1,6 @@
-package KNUCHAT.dao;
+package KNUCHAT.domain;
 
-import KNUCHAT.enumType.ChatMessageType;
+import KNUCHAT.type.ChatMessageType;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

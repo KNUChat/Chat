@@ -1,4 +1,4 @@
-package KNUCHAT.enumType;
+package KNUCHAT.type;
 
 public enum ChatMessageType {
 

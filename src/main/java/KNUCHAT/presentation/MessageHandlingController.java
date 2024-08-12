@@ -1,7 +1,7 @@
-package KNUCHAT.api;
+package KNUCHAT.presentation;
 
-import KNUCHAT.dao.ChatMessage;
-import KNUCHAT.service.KafkaService;
+import KNUCHAT.domain.ChatMessage;
+import KNUCHAT.application.KafkaService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.handler.annotation.DestinationVariable;

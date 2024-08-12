@@ -1,6 +1,5 @@
-package KNUCHAT.dao;
+package KNUCHAT.domain;
 
-import KNUCHAT.enumType.VideoCallStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

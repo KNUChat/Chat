@@ -1,4 +1,4 @@
-package KNUCHAT.enumType;
+package KNUCHAT.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

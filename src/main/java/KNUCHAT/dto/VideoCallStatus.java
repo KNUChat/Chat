@@ -1,4 +1,4 @@
-package KNUCHAT.domain;
+package KNUCHAT.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

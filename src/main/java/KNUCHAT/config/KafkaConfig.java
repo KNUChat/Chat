@@ -1,7 +1,7 @@
 package KNUCHAT.config;
 
 
-import KNUCHAT.domain.VideoMessage;
+import KNUCHAT.dto.VideoMessage;
 import java.util.HashMap;
 import java.util.Map;
 import lombok.RequiredArgsConstructor;
@@ -10,10 +10,8 @@ import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.kafka.common.serialization.StringSerializer;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
@@ -35,7 +33,7 @@ public class KafkaConfig {
     @Bean
     public ProducerFactory<Object, Object> producerFactory(){
         Map<String, Object> props = new HashMap<>();
-        log.info("Kafka Properties: " + kafkaProperties.toString());
+
         //Customized
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaProperties.bootstrapServers());
 
